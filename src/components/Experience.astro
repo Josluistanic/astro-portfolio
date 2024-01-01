@@ -1,0 +1,45 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const experience = [
+    {
+        date: "Actualidad",
+        title: "Plataforma de facturación electrónica",
+        description:
+            "Tras el crecimiento del sistema realizado en 2022 se me asigna convertir el sistema en una plataforma de facturación electrónica que permita la consolidación de la información.",
+    },
+    {
+        date: "Marzo 2023",
+        title: "Sistema de contabilidad gubernamental",
+        description:
+            "Sistema de contabilidad gubernamental en la web utilizando el stack TALL y arquitectura multi tenancy. El sistema se encuentra basado en un sistema de escritorio existente.",
+    },
+    {
+        date: "Diciembre 2022",
+        title: "Instalación de plantillas y administración por CMS",
+        description:
+            "Instalación y personalización de plantillas en WordPress y Joomla junto a la administración de contenidos de instituciones públicas (LOTAIP) y privadas.",
+    },
+    {
+        date: "Febrero 2022",
+        title: "Sistema de facturación electrónica",
+        description:
+            "Sistema de facturación electrónica para empresas públicas y privadas, usando PHP vainilla, MySQL y JavaScript.",
+    },
+    {
+        date: "Marzo 2020",
+        title: "Capacitación remota",
+        description:
+            "Durante la pandemia impartí capacitaciones sobre manejo de software de videoconferencia, LMS, ofimática y TICs. Además de clases de matemáticas, informática e historia.",
+    },
+    {
+        date: "Septiembre 2015",
+        title: "Reparación y mantenimiento",
+        description:
+            "Reparación y mantenimiento de computadoras, reemplazo de partes, instalación de sistemas operativos (dual boot) y software de ofimática.",
+    },
+];
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-4">
+    {experience.map((item) => <ExperienceItem {...item} />)}
+</ol>
