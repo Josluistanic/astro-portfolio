@@ -1,0 +1,49 @@
+---
+import LaravelIcon from "./icons/LaravelIcon.astro";
+import WinterCMSIcon from "./icons/WinterCMSIcon.astro";
+const TAGS = {
+  LARAVEL: {
+    name: "Laravel",
+    class: "bg-red-500 text-white",
+    icon: LaravelIcon,
+  },
+  WINTERCMS: {
+    name: "WinterCMS",
+    class: "bg-red-500 text-white",
+    icon: WinterCMSIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Nunu",
+    description:
+      "Nunu es un proyecto que involucra un CMS ligero y un tema diseñado para páginas web de instituciones públicas del Ecuador. Orientado a ser accesible, simple e intuitivo",
+    link: "https://gadlaunionq.gob.ec",
+    github: "#!",
+    image: "/img/projects/gadlaunionq.webp",
+    tags: [TAGS.LARAVEL, TAGS.WINTERCMS],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ title, description, tags, image }) => (
+    <article>
+      <h1 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h1>
+      <p class="text-lg  mb-4 text-pretty">{description}</p>
+      <ul>
+        {tags.map((tag) => (
+          <li>
+            <tag.icon class="size-10" /> {tag.name}
+          </li>
+        ))}
+      </ul>
+      <img
+        class="rounded shadow-2xl shadow-white/15"
+        src={image}
+        alt={`Captura de pantalla del projecto ${title}`}
+      />
+    </article>
+  ))
+}
