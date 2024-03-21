@@ -14,7 +14,7 @@ import JQueryIcon from "./icons/JQueryIcon.astro";
 const TAGS = {
   LARAVEL: {
     name: "Laravel",
-    class: "bg-red-200 text-red-700",
+    class: "bg-red-100 text-red-700",
     icon: LaravelIcon,
   },
   WINTERCMS: {
@@ -24,22 +24,22 @@ const TAGS = {
   },
   TAILWIND: {
     name: "TailwindCSS",
-    class: "bg-sky-200 text-sky-700",
+    class: "bg-cyan-200 text-cyan-700",
     icon: TailwindIcon,
   },
   BOOTSTRAP: {
     name: "Bootstrap",
-    class: "bg-sky-200 text-sky-700",
+    class: "bg-violet-300 text-violet-700",
     icon: BootstrapIcon,
   },
   PHP: {
     name: "PHP",
-    class: "bg-sky-200 text-sky-700",
+    class: "bg-slate-400 text-slate-700",
     icon: PhpIcon,
   },
   JAVASCRIPT: {
     name: "JavaScript",
-    class: "bg-sky-200 text-sky-700",
+    class: "bg-amber-100 text-amber-700",
     icon: JavaScriptIcon,
   },
   JOOMLA: {
@@ -54,7 +54,7 @@ const TAGS = {
   },
   LIVEWIRE: {
     name: "Livewire",
-    class: "bg-sky-200 text-sky-700",
+    class: "bg-pink-200  text-pink-700",
     icon: LivewireIcon,
   },
   ALPINEJS: {
@@ -64,7 +64,7 @@ const TAGS = {
   },
   JQUERY: {
     name: "JQuery",
-    class: "bg-sky-200 text-sky-700",
+    class: "bg-sky-300 text-sky-700",
     icon: JQueryIcon,
   },
 };
@@ -73,11 +73,36 @@ const PROJECTS = [
   {
     title: "Nunu",
     description:
-      "Nunu es un proyecto que involucra un CMS ligero y un tema diseñado para páginas web de instituciones públicas del Ecuador. Orientado a ser accesible, simple e intuitivo",
+      "Nunu es un proyecto que involucra un CMS ligero y un tema diseñado para páginas web de instituciones públicas del Ecuador. Orientado a ser accesible, simple e intuitivo. Proyecto privado",
     link: "https://gadlaunionq.gob.ec",
     github: "#!",
     image: "/img/projects/gadlaunionq.webp",
     tags: [TAGS.WINTERCMS, TAGS.BOOTSTRAP, TAGS.JQUERY],
+  },
+  {
+    title: "Facturador HardSoft",
+    description:
+      "Sistema de facturación que luego se convirtió en plataforma orientado a ser usado tanto por instituciones públicas como por empresas privadas. Programado bajo la ficha técnica y reglamentación del SRI con la capacidad de emitir facturas, comprobantes de retención, comprobantes de retención ATS, liquidaciones de compra de bienes y prestación de servicios, realizar reportes, emitir el Anexo Transaccional Simplificado, gestionar clientes y productos, manejar diferentes establecimientos con su respectivo logo propio y puntos de emisión, firma de comprobantes, generación de documentos RIDE, tickets de facturas para impresoras térmicas y funcionar con uno o varios usuarios para la misma institución. Al ser un proyecto empresarial privado no puedo compartir más que el enlace",
+    link: "https://facturadorharsoft.com",
+    github: "#!",
+    image: "/img/projects/facturadorhardsoft.webp",
+    tags: [
+      TAGS.LARAVEL,
+      TAGS.LIVEWIRE,
+      TAGS.ALPINEJS,
+      TAGS.TAILWIND,
+      TAGS.JAVASCRIPT,
+      TAGS.PHP,
+    ],
+  },
+  {
+    title: "Yachana",
+    description:
+      "Yachana es un paquete de composer que permite crear documentos XML de diferentes tipos en base a lo establecido en la ficha técnica del SRI. El proyecto se encuentra en desarrollo y será liberado pronto",
+    link: "#!",
+    github: "#!",
+    image: "/img/projects/yachana.webp",
+    tags: [TAGS.PHP],
   },
 ];
 ---
@@ -86,8 +111,8 @@ const PROJECTS = [
   PROJECTS.map(({ title, description, tags, image }) => (
     <article>
       <h1 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h1>
-      <p class="text-lg  mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row ">
+      <p class=" mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-2 flex-row mb-2">
         {tags.map((tag) => (
           <li>
             <span
