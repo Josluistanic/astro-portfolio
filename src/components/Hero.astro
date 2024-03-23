@@ -1,0 +1,72 @@
+---
+const altPersonalImg = "José Luis Tanicuchí Cadena";
+
+import Badge from "@/components/Badge.astro";
+import LinkedInIcon from "@/components/icons/LinkedInIcon.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import InstagramIcon from "@/components/icons/InstagramIcon.astro";
+import GitHubIcon from "@/components/icons/GitHubIcon.astro";
+import SendMailIcon from "@/components/icons/SendMailIcon.astro";
+---
+
+<div class="max-w-xl">
+  <div class="flex gap-4 mb-4">
+    <img
+      class="rounded-full shadow-lg size-24"
+      src="/me.webp"
+      alt={altPersonalImg}
+    />
+    <a
+      class="flex items-center justify-center"
+      href="https://ec.linkedin.com/in/joseluistanic"
+      target="_blank"
+      rel="noopener"><Badge>Freelance</Badge></a
+    >
+  </div>
+</div>
+
+<h1
+  class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+>
+  José Luis Tanicuchí Cadena
+</h1>
+<p
+  class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
+>
+  <strong>Desarrollador Web</strong>
+  ecuatoriano. Especializado en el
+  <strong>stack TALL, UX y UI</strong>
+</p>
+<nav class="flex flex-wrap gap-4 mt-8">
+  <SocialPill
+    href="https://www.linkedin.com/in/joseluistanic/"
+    class="hover:text-blue-400/90"
+  >
+    <LinkedInIcon class="size-4" />
+    LinkedIn
+  </SocialPill>
+
+  <SocialPill
+    href="https://github.com/Josluistanic"
+    class="hover:text-stone-400/90"
+  >
+    <GitHubIcon class="size-4" />
+    GitHub
+  </SocialPill>
+
+  <SocialPill
+    href="https://www.instagram.com/jos.luistanic/"
+    class="hover:text-[#ff6c6b]"
+  >
+    <InstagramIcon class="size-4" />
+    Instagram
+  </SocialPill>
+
+  <SocialPill
+    href="mailto:dev@josluistanic.com"
+    class="hover:text-stone-400/90"
+  >
+    <SendMailIcon class="size-4" />
+    dev@josluistanic.com
+  </SocialPill>
+</nav>

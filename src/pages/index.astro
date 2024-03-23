@@ -1,18 +1,14 @@
 ---
-import Badge from "../components/Badge.astro";
-import Layout from "../layouts/Layout.astro";
-import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
-import SocialPill from "../components/SocialPill.astro";
-import InstagramIcon from "../components/icons/InstagramIcon.astro";
-import GitHubIcon from "../components/icons/GitHubIcon.astro";
-import SendMailIcon from "../components/icons/SendMailIcon.astro";
-import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
-import SectionContainer from "../components/SectionContainer.astro";
-import BriefcaseIcon from "../components/icons/BriefcaseIcon.astro";
-import CodeIcon from "../components/icons/CodeIcon.astro";
-import AboutMe from "../components/AboutMe.astro";
-import ProfileCheck from "../components/icons/ProfileCheck.astro";
+import Layout from "@/layouts/Layout.astro";
+
+import Hero from "@/components/Hero.astro";
+import Experience from "@/components/Experience.astro";
+import Projects from "@/components/Projects.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import BriefcaseIcon from "@/components/icons/BriefcaseIcon.astro";
+import CodeIcon from "@/components/icons/CodeIcon.astro";
+import AboutMe from "@/components/AboutMe.astro";
+import ProfileCheck from "@/components/icons/ProfileCheck.astro";
 ---
 
 <Layout
@@ -21,85 +17,32 @@ import ProfileCheck from "../components/icons/ProfileCheck.astro";
 >
   <main class="px-6">
     <SectionContainer class="pt-32 pb-12">
-      <img
-        class="mb-4 rounded-full size-24"
-        src="https://avatars.githubusercontent.com/u/66490180?v=4"
-        alt="Josluistanic avatar"
-      />
-      <h1
-        class="flex flex-row pb-6 text-xl font-bold text-white lg:text-4xl gap-x-4 lg:pb-10"
-      >
-        Hola, soy José Tanicuchí
-        <a
-          class="flex items-center justify-center"
-          href="https://ec.linkedin.com/in/joseluistanic"
-          target="_blank"
-          rel="noopener"><Badge>Freelance</Badge></a
-        >
-      </h1>
-      <h2 class="text-xl lg:text-2xl text-wrap mb-4 max-w-[700px]">
-        <span class="text-yellow-200/90">Desarrollador Web</span>
-        ecuatoriano.
-        <span class="text-opacity-65">
-          Especializado en el stack TALL, UX y UI.</span
-        >
-      </h2>
-      <nav class="flex flex-wrap gap-4 mb-5">
-        <SocialPill
-          href="https://www.linkedin.com/in/joseluistanic/"
-          class="hover:text-blue-400/90"
-        >
-          <LinkedInIcon class="size-4" />
-          LinkedIn
-        </SocialPill>
-
-        <SocialPill
-          href="https://github.com/Josluistanic"
-          class="hover:text-stone-400/90"
-        >
-          <GitHubIcon class="size-4" />
-          GitHub
-        </SocialPill>
-
-        <SocialPill
-          href="https://www.instagram.com/jos.luistanic/"
-          class="hover:text-[#ff6c6b]"
-        >
-          <InstagramIcon class="size-4" />
-          Instagram
-        </SocialPill>
-
-        <SocialPill
-          href="mailto:dev@josluistanic.com"
-          class="hover:text-stone-400/90"
-        >
-          <SendMailIcon class="size-4" />
-          dev@josluistanic.com
-        </SocialPill>
-      </nav>
+      <Hero />
     </SectionContainer>
-    <SectionContainer id="experiencia">
-      <h2 class="flex items-center mb-6 text-2xl font-semibold gap-x-2">
-        <BriefcaseIcon class="m-1 size-8" />
-        Experiencia
-      </h2>
-      <Experience />
-    </SectionContainer>
-    <SectionContainer id="proyectos">
-      <h2 class="flex items-center mb-6 text-2xl font-semibold gap-x-2">
-        <CodeIcon class="m-1 size-8" />
-        Proyectos
-      </h2>
-      <Projects />
-    </SectionContainer>
-    <SectionContainer id="sobre-mi">
-      <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
-      >
-        <ProfileCheck class="size-8" />
-        Sobre mí
-      </h2>
-      <AboutMe />
-    </SectionContainer>
+    <div class="space-y-24">
+      <SectionContainer id="experiencia">
+        <h2 class="flex items-center mb-6 text-2xl font-semibold gap-x-2">
+          <BriefcaseIcon class="m-1 size-8" />
+          Experiencia
+        </h2>
+        <Experience />
+      </SectionContainer>
+      <SectionContainer id="proyectos">
+        <h2 class="flex items-center mb-6 text-2xl font-semibold gap-x-2">
+          <CodeIcon class="m-1 size-8" />
+          Proyectos
+        </h2>
+        <Projects />
+      </SectionContainer>
+      <SectionContainer id="sobre-mi">
+        <h2
+          class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+        >
+          <ProfileCheck class="size-8" />
+          Sobre mí
+        </h2>
+        <AboutMe />
+      </SectionContainer>
+    </div>
   </main>
 </Layout>
