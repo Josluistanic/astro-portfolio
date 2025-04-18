@@ -7,6 +7,7 @@ import SocialPill from "@/components/SocialPill.astro";
 import InstagramIcon from "@/components/icons/InstagramIcon.astro";
 import GitHubIcon from "@/components/icons/GitHubIcon.astro";
 import SendMailIcon from "@/components/icons/SendMailIcon.astro";
+import YouTubeIcon from "@/components/icons/YouTubeIcon.astro";
 ---
 
 <div class="max-w-xl">
@@ -37,6 +38,14 @@ import SendMailIcon from "@/components/icons/SendMailIcon.astro";
   ecuatoriano. Especializado en el
   <strong>stack TALL, UX y UI</strong>
 </p>
+<p
+  class="text-xs text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-blue-500 [&>strong]:font-semibold dark:text-gray-300"
+>
+  Consultor en desarrollo de software y programación web. Me apasiona crear
+  aplicaciones web y ayudar a otros a mejorar su presencia digital. He trabajado
+  en proyectos de gran alcance y tengo experiencia en el desarrollo de
+  aplicaciones escalables y eficientes.
+</p>
 <nav class="flex flex-wrap gap-4 mt-8">
   <SocialPill
     href="https://www.linkedin.com/in/joseluistanic/"
@@ -60,6 +69,14 @@ import SendMailIcon from "@/components/icons/SendMailIcon.astro";
   >
     <InstagramIcon class="size-4" />
     Instagram
+  </SocialPill>
+
+  <SocialPill
+    href="https://www.youtube.com/@cucuruchoDev"
+    class="hover:text-[#ff0034]"
+  >
+    <YouTubeIcon class="size-4" />
+    YouTube
   </SocialPill>
 
   <SocialPill
