@@ -21,6 +21,28 @@ const { description, title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://josluistanic.com" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Portfolio de José Luis Tanicuchí - Desarrollador y programador web"
+    />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/me.png" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="josluistanic.com" />
+    <meta property="twitter:url" content="https://josluistanic.com" />
+    <meta
+      name="twitter:title"
+      content="Portfolio de José Luis Tanicuchí - Desarrollador y programador web"
+    />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/me.png" />
+
     <ClientRouter />
   </head>
 
