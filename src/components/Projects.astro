@@ -10,6 +10,8 @@ import WordpressIcon from "./icons/WordpressIcon.astro";
 import LivewireIcon from "./icons/LivewireIcon.astro";
 import AlpineJsIcon from "./icons/AlpineJsIcon.astro";
 import JQueryIcon from "./icons/JQueryIcon.astro";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import LinkIcon from "./icons/LinkIcon.astro";
 
 const TAGS = {
   LARAVEL: {
@@ -74,8 +76,7 @@ const PROJECTS = [
     title: "XAdES Tools",
     description:
       "Una web con herramientas para probar el uso de XAdES-BES en una aplicación web. Contiene herramientas para extraer los números aleatorios de un comprobante firmado, firmar un comprobante (si se desea con los números aleatorios para debug), enviar a validación en el entorno de pruebas del SRI y consultar a autorización en el entorno de pruebas del SRI.",
-    link: "https://gadlaunionq.gob.ec",
-    github: "#!",
+    link: "https://xadestools.josluistanic.com",
     image: "/img/projects/xadestools.webp",
     tags: [TAGS.TAILWIND, TAGS.ALPINEJS, TAGS.LARAVEL, TAGS.LIVEWIRE],
   },
@@ -83,8 +84,7 @@ const PROJECTS = [
     title: "Nunu",
     description:
       "Web con WinterCMS y Bootstrap, creada para presentar información de instituciones públicas. Se utilizó un enfoque monorepo con ramas para cada una de las versiones personalizadas de cada institución.",
-    link: "https://gadlaunionq.gob.ec",
-    github: "#!",
+    link: "https://gadsalinasimbabura.gob.ec",
     image: "/img/projects/gadlaunionq.webp",
     tags: [TAGS.WINTERCMS, TAGS.BOOTSTRAP, TAGS.JQUERY],
   },
@@ -92,8 +92,6 @@ const PROJECTS = [
     title: "Facturador HS",
     description:
       "Plataforma de facturación web con más de 80 clientes de instituciones públicas y empresas privadas. Capacidad de emitir, firmar y visualizar: facturas, comprobantes de retención ATS y liquidaciones de compra. Programado bajo la ficha técnica y reglamentación del SRI. Incluye generación de reportes y la capacidad de imprimir facturas en impresoras térmicas. Incluye un apartado para la generación del Anexo Transaccional Simplificado (ATS) y funciona con uno o varios usuarios para la misma institución.",
-    link: "https://facturadorharsoft.com",
-    github: "#!",
     image: "/img/projects/facturadorhardsoft.webp",
     tags: [TAGS.LARAVEL, TAGS.LIVEWIRE, TAGS.ALPINEJS, TAGS.TAILWIND],
   },
@@ -101,8 +99,6 @@ const PROJECTS = [
     title: "Yachana",
     description:
       "Yachana es un paquete de composer que permite crear documentos XML de diferentes tipos en base a lo establecido en la ficha técnica del SRI. El proyecto se encuentra en desarrollo",
-    link: "#!",
-    github: "#!",
     image: "/img/projects/yachana.webp",
     tags: [TAGS.PHP],
   },
@@ -111,7 +107,7 @@ const PROJECTS = [
 
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ title, description, tags, image }) => (
+    PROJECTS.map(({ title, description, tags, image, link }) => (
       <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
         <div class="w-full md:w-1/2">
           <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
@@ -144,6 +140,24 @@ const PROJECTS = [
 
             <div class="mt-2 text-gray-700 dark:text-gray-400">
               {description}
+            </div>
+            <div class="flex flex-wrap mt-0">
+              <ul class="flex flex-row mb-2 gap-x-1 max-w-full">
+                {link && (
+                  <li class="transition duration-75 md:hover:scale-105 hover:cursor-pointer hover:font-bold">
+                    <span class="flex gap-x-2 rounded-full text-xs py-1 px-2">
+                      <LinkIcon class="size-6" />
+                      <a
+                        target="_blank"
+                        href={link}
+                        class="text-blue-500 dark:text-yellow-100 text-lg"
+                      >
+                        Ver sitio
+                      </a>
+                    </span>
+                  </li>
+                )}
+              </ul>
             </div>
           </div>
         </div>
