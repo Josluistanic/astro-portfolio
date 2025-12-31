@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import { ClientRouter } from "astro:transitions";
 // Supports weights 100-900
 import "@fontsource-variable/onest";
+import "../styles/global.css";
 interface Props {
   title: string;
   description: string;
@@ -13,7 +14,7 @@ const { description, title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -46,9 +47,9 @@ const { description, title } = Astro.props;
     <ClientRouter />
   </head>
 
-  <body class="relative text-black dark:text-white">
+  <body class="relative text-black dark:text-white overflow-x-hidden">
     <div
-      class="absolute bottom-0 top-0 z-[-2] min-h-screen w-full bg-gray-50 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(45,45,45,0.5),rgba(255,255,255,0.9))] dark:bg-gray-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(45,45,140,0.3),rgba(255,255,255,0))]"
+      class="fixed inset-0 z-[-2] bg-gray-50 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(45,45,45,0.5),rgba(255,255,255,0.9))] dark:bg-gray-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(45,45,140,0.3),rgba(255,255,255,0))]"
     >
     </div>
     <Header />
