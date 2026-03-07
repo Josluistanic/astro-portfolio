@@ -9,6 +9,8 @@ import BriefcaseIcon from "@/components/icons/BriefcaseIcon.svg";
 import CodeIcon from "@/components/icons/CodeIcon.svg";
 import AboutMe from "@/components/AboutMe.astro";
 import ProfileCheck from "@/components/icons/ProfileCheck.svg";
+import LatestPosts from "@/components/LatestPosts.astro";
+import PencilIcon from "@/components/icons/PencilIcon.svg";
 ---
 
 <Layout
@@ -28,6 +30,15 @@ import ProfileCheck from "@/components/icons/ProfileCheck.svg";
           Experiencia
         </h2>
         <Experience />
+      </SectionContainer>
+      <SectionContainer id="blog">
+        <h2
+          class="flex items-center mb-6 text-2xl font-semibold gap-x-2 text-black/80 dark:text-white"
+        >
+          <PencilIcon class="m-1 size-8" />
+          Últimas entradas
+        </h2>
+        <LatestPosts />
       </SectionContainer>
       <SectionContainer id="proyectos">
         <h2

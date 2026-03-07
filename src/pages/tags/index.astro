@@ -1,0 +1,65 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import { tagClass } from "@/utils/tagColors";
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+const tagCounts = posts.reduce<Record<string, number>>((acc, post) => {
+  post.data.tags.forEach((tag) => {
+    acc[tag] = (acc[tag] ?? 0) + 1;
+  });
+  return acc;
+}, {});
+
+const tags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
+---
+
+<Layout
+  title="Etiquetas — Blog de José Luis"
+  description="Todos los temas del blog."
+>
+  <main class="max-w-2xl mx-auto px-4 pt-24 pb-16">
+    <header class="mb-10">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition mb-6"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        Volver al blog
+      </a>
+      <h1 class="text-3xl font-bold mb-2">Etiquetas</h1>
+      <p class="text-gray-600 dark:text-gray-400">
+        Todos los temas del blog.
+      </p>
+    </header>
+
+    <div class="flex flex-wrap gap-3">
+      {
+        tags.map(([tag, count]) => (
+          <a
+            href={`/tags/${tag}`}
+            class:list={["flex items-center gap-2 px-4 py-2 rounded-full transition font-medium", tagClass(tag)]}
+          >
+            #{tag}
+            <span class="text-xs opacity-60 font-normal">
+              {count}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

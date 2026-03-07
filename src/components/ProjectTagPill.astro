@@ -1,0 +1,41 @@
+---
+import { PROJECT_TAGS, type ProjectTagKey } from "@/utils/projectTags";
+import LaravelIcon from "./icons/LaravelIcon.svg";
+import WinterCMSIcon from "./icons/WinterCMSIcon.svg";
+import TailwindIcon from "./icons/TailwindIcon.svg";
+import BootstrapIcon from "./icons/BootstrapIcon.svg";
+import PhpIcon from "./icons/PhpIcon.svg";
+import JavaScriptIcon from "./icons/JavaScriptIcon.svg";
+import JoomlaIcon from "./icons/JoomlaIcon.svg";
+import WordpressIcon from "./icons/WordpressIcon.svg";
+import LivewireIcon from "./icons/LivewireIcon.svg";
+import AlpineJsIcon from "./icons/AlpineJsIcon.svg";
+import JQueryIcon from "./icons/JQueryIcon.svg";
+
+const ICONS: Record<ProjectTagKey, any> = {
+  LARAVEL: LaravelIcon,
+  WINTERCMS: WinterCMSIcon,
+  TAILWIND: TailwindIcon,
+  BOOTSTRAP: BootstrapIcon,
+  PHP: PhpIcon,
+  JAVASCRIPT: JavaScriptIcon,
+  JOOMLA: JoomlaIcon,
+  WORDPRESS: WordpressIcon,
+  LIVEWIRE: LivewireIcon,
+  ALPINEJS: AlpineJsIcon,
+  JQUERY: JQueryIcon,
+};
+
+interface Props {
+  tag: ProjectTagKey;
+}
+
+const { tag } = Astro.props;
+const meta = PROJECT_TAGS[tag];
+const Icon = ICONS[tag];
+---
+
+<span class={`flex gap-x-2 rounded-full text-xs ${meta.class} py-1 px-2`}>
+  <Icon class="size-4" />
+  {meta.name}
+</span>

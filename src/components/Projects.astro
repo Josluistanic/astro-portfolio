@@ -1,112 +1,13 @@
 ---
-import LaravelIcon from "./icons/LaravelIcon.svg";
-import WinterCMSIcon from "./icons/WinterCMSIcon.svg";
-import TailwindIcon from "./icons/TailwindIcon.svg";
-import BootstrapIcon from "./icons/BootstrapIcon.svg";
-import PhpIcon from "./icons/PhpIcon.svg";
-import JavaScriptIcon from "./icons/JavaScriptIcon.svg";
-import JoomlaIcon from "./icons/JoomlaIcon.svg";
-import WordpressIcon from "./icons/WordpressIcon.svg";
-import LivewireIcon from "./icons/LivewireIcon.svg";
-import AlpineJsIcon from "./icons/AlpineJsIcon.svg";
-import JQueryIcon from "./icons/JQueryIcon.svg";
-import GitHubIcon from "./icons/GitHubIcon.svg";
+import { PROJECTS } from "@/data/projects";
+import ProjectTagPill from "./ProjectTagPill.astro";
 import LinkIcon from "./icons/LinkIcon.svg";
-
-const TAGS = {
-  LARAVEL: {
-    name: "Laravel",
-    class: "bg-red-100 text-red-700",
-    icon: LaravelIcon,
-  },
-  WINTERCMS: {
-    name: "WinterCMS",
-    class: "bg-sky-200 text-sky-700",
-    icon: WinterCMSIcon,
-  },
-  TAILWIND: {
-    name: "TailwindCSS",
-    class: "bg-cyan-200 text-cyan-700",
-    icon: TailwindIcon,
-  },
-  BOOTSTRAP: {
-    name: "Bootstrap",
-    class: "bg-violet-300 text-violet-700",
-    icon: BootstrapIcon,
-  },
-  PHP: {
-    name: "PHP",
-    class: "bg-slate-400 text-slate-700",
-    icon: PhpIcon,
-  },
-  JAVASCRIPT: {
-    name: "JavaScript",
-    class: "bg-amber-100 text-amber-700",
-    icon: JavaScriptIcon,
-  },
-  JOOMLA: {
-    name: "Joomla",
-    class: "bg-sky-200 text-sky-700",
-    icon: JoomlaIcon,
-  },
-  WORDPRESS: {
-    name: "Wordpress",
-    class: "bg-sky-200 text-sky-700",
-    icon: WordpressIcon,
-  },
-  LIVEWIRE: {
-    name: "Livewire",
-    class: "bg-pink-200  text-pink-700",
-    icon: LivewireIcon,
-  },
-  ALPINEJS: {
-    name: "AlpineJS",
-    class: "bg-sky-200 text-sky-700",
-    icon: AlpineJsIcon,
-  },
-  JQUERY: {
-    name: "JQuery",
-    class: "bg-sky-300 text-sky-700",
-    icon: JQueryIcon,
-  },
-};
-
-const PROJECTS = [
-  {
-    title: "XAdES Tools",
-    description:
-      "Una web con herramientas para probar el uso de XAdES-BES en una aplicación web. Contiene herramientas para extraer los números aleatorios de un comprobante firmado, firmar un comprobante (si se desea con los números aleatorios para debug), enviar a validación en el entorno de pruebas del SRI y consultar a autorización en el entorno de pruebas del SRI.",
-    image: "/img/projects/xadestools.webp",
-    tags: [TAGS.TAILWIND, TAGS.ALPINEJS, TAGS.LARAVEL, TAGS.LIVEWIRE],
-  },
-  {
-    title: "Nunu",
-    description:
-      "Web con WinterCMS y Bootstrap, creada para presentar información de instituciones públicas. Se utilizó un enfoque monorepo con ramas para cada una de las versiones personalizadas de cada institución.",
-    link: "https://gadsalinasimbabura.gob.ec",
-    image: "/img/projects/gadlaunionq.webp",
-    tags: [TAGS.WINTERCMS, TAGS.BOOTSTRAP, TAGS.JQUERY],
-  },
-  {
-    title: "Facturador HS",
-    description:
-      "Plataforma de facturación web con más de 80 clientes de instituciones públicas y empresas privadas. Capacidad de emitir, firmar y visualizar: facturas, comprobantes de retención ATS y liquidaciones de compra. Programado bajo la ficha técnica y reglamentación del SRI. Incluye generación de reportes y la capacidad de imprimir facturas en impresoras térmicas. Incluye un apartado para la generación del Anexo Transaccional Simplificado (ATS) y funciona con uno o varios usuarios para la misma institución.",
-    image: "/img/projects/facturadorhardsoft.webp",
-    tags: [TAGS.LARAVEL, TAGS.LIVEWIRE, TAGS.ALPINEJS, TAGS.TAILWIND],
-  },
-  {
-    title: "Yachana",
-    description:
-      "Yachana es un paquete de composer que permite crear documentos XML de diferentes tipos en base a lo establecido en la ficha técnica del SRI. El proyecto se encuentra en desarrollo",
-    image: "/img/projects/yachana.webp",
-    tags: [TAGS.PHP],
-  },
-];
+import PencilIcon from "./icons/PencilIcon.svg";
 ---
 
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ title, description, tags, image, link }) => (
+    PROJECTS.map(({ title, description, tags, image, link, blogPost }) => (
       <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
         <div class="w-full md:w-1/2">
           <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
@@ -127,12 +28,7 @@ const PROJECTS = [
             <ul class="flex flex-row mb-2 gap-x-2 max-w-full">
               {tags.map((tag) => (
                 <li>
-                  <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-                  >
-                    <tag.icon class="size-4" />
-                    {tag.name}
-                  </span>
+                  <ProjectTagPill tag={tag} />
                 </li>
               ))}
             </ul>
@@ -152,6 +48,19 @@ const PROJECTS = [
                         class="text-blue-500 dark:text-yellow-100 text-lg"
                       >
                         Ver sitio
+                      </a>
+                    </span>
+                  </li>
+                )}
+                {blogPost && (
+                  <li class="transition duration-75 md:hover:scale-105 hover:cursor-pointer hover:font-bold">
+                    <span class="flex gap-x-2 rounded-full text-xs py-1 px-2">
+                      <PencilIcon class="size-6" />
+                      <a
+                        href={`/blog/${blogPost}`}
+                        class="text-blue-500 dark:text-yellow-100 text-lg"
+                      >
+                        Ver artículo
                       </a>
                     </span>
                   </li>

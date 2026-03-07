@@ -1,6 +1,8 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
 
+const isHome = Astro.url.pathname === "/";
+
 const navItems = [
   {
     title: "Experiencia",
@@ -18,6 +20,11 @@ const navItems = [
     url: "/#sobre-mi",
   },
   {
+    title: "Blog",
+    label: "blog",
+    url: "/blog",
+  },
+  {
     title: "Contacto",
     label: "contacto",
     url: "mailto:josluistanic@gmail.com",
@@ -32,9 +39,23 @@ const navItems = [
     class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
   >
     {
-      navItems.map(({ title, label, url }) => (
+      !isHome && (
         <a
           class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
+          aria-label="inicio"
+          href="/"
+        >
+          ← Inicio
+        </a>
+      )
+    }
+    {
+      navItems.map(({ title, label, url }) => (
+        <a
+          class:list={[
+            "relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400",
+            { "hidden md:block": url.startsWith("/#") },
+          ]}
           aria-label={label}
           href={url}
         >

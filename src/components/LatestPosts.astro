@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import BlogPostCard from "./BlogPostCard.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+  {
+    posts.map((post) => (
+      <BlogPostCard
+        title={post.data.title}
+        description={post.data.description}
+        pubDate={post.data.pubDate}
+        tags={post.data.tags}
+        slug={post.id}
+      />
+    ))
+  }
+</div>
+
+<div class="mt-6 text-center">
+  <a
+    href="/blog"
+    class="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition"
+  >
+    Ver todos los artículos
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="m9 18 6-6-6-6"></path>
+    </svg>
+  </a>
+</div>

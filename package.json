@@ -10,11 +10,16 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.2",
+    "@astrojs/rss": "^4.0.15",
     "@fontsource-variable/onest": "^5.1.0",
-    "@tailwindcss/vite": "^4.1.0",
-    "astro": "^5.7.3",
-    "tailwindcss": "^4.1.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.18.0",
+    "tailwindcss": "^4.2.1",
     "typescript": "^5.7.0"
+  },
+  "overrides": {
+    "yaml-language-server": "1.21.0"
   }
 }

@@ -1,0 +1,71 @@
+---
+import Layout from "./Layout.astro";
+import { tagClass } from "@/utils/tagColors";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+}
+
+const { title, description, pubDate, tags } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString("es-ES", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<Layout title={`${title} — Blog de José Luis`} description={description}>
+  <main class="w-full min-w-0 max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto px-4 md:px-8 pt-24 pb-16 overflow-x-hidden">
+    <article>
+      <header class="mb-8">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition mb-6"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+          Volver al blog
+        </a>
+        <h1 class="text-3xl font-bold mb-3">{title}</h1>
+        <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">
+          {formattedDate}
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {
+            tags.map((tag) => (
+              <a
+                href={`/tags/${tag}`}
+                class:list={["text-xs px-2 py-1 rounded-full transition", tagClass(tag)]}
+              >
+                #{tag}
+              </a>
+            ))
+          }
+        </div>
+      </header>
+
+      <div
+        class="prose prose-gray dark:prose-invert max-w-none
+          prose-headings:font-semibold
+          prose-a:text-yellow-600 dark:prose-a:text-yellow-400"
+      >
+        <slot />
+      </div>
+    </article>
+  </main>
+</Layout>

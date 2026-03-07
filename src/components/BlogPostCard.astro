@@ -1,0 +1,54 @@
+---
+import { tagClass } from "@/utils/tagColors";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+  slug: string;
+}
+
+const { title, description, pubDate, tags, slug } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString("es-ES", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<article
+  class="group flex flex-col gap-3 p-5 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-yellow-400/50 dark:hover:border-yellow-500/30 transition-colors bg-white/50 dark:bg-gray-900/30"
+>
+  <div class="flex flex-wrap gap-2">
+    {
+      tags.map((tag) => (
+        <a
+          href={`/tags/${tag}`}
+          class:list={["text-xs px-2 py-0.5 rounded-full transition", tagClass(tag)]}
+        >
+          #{tag}
+        </a>
+      ))
+    }
+  </div>
+
+  <a href={`/blog/${slug}`} class="block">
+    <h2
+      class="text-lg font-semibold group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors"
+    >
+      {title}
+    </h2>
+    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1 leading-relaxed">
+      {description}
+    </p>
+  </a>
+
+  <time
+    class="text-xs text-gray-400 dark:text-gray-500 mt-auto"
+    datetime={pubDate.toISOString()}
+  >
+    {formattedDate}
+  </time>
+</article>

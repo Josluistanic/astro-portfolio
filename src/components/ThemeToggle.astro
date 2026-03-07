@@ -60,16 +60,12 @@ const THEMES = ["Light", "Dark", "System"];
 <script is:inline>
   let remove = null;
   const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
-  const themesMenu = document.getElementById("themes-menu");
 
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined") {
       return localStorage.getItem("theme") ?? "system";
     }
-
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    return matchMedia.matches ? "dark" : "light";
   };
 
   const updateIcon = (themePreference) => {
@@ -96,20 +92,32 @@ const THEMES = ["Light", "Dark", "System"];
     document.documentElement.classList[isDark ? "add" : "remove"]("dark");
   };
 
-  updateTheme();
-
-  document.addEventListener("click", () => themesMenu.classList.remove("open"));
-
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation();
-    const isClosed = !themesMenu.classList.contains("open");
-    themesMenu.classList[isClosed ? "add" : "remove"]("open");
+  // Close menu on any outside click — registered once, queries fresh DOM each time.
+  document.addEventListener("click", () => {
+    const menu = document.getElementById("themes-menu");
+    if (menu) menu.classList.remove("open");
   });
 
-  document.querySelectorAll(".themes-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
-      updateTheme();
+  // astro:page-load fires on initial load AND after every View Transition navigation,
+  // so DOM-dependent setup (event listeners, icon state) is always re-applied to
+  // the current elements without relying on the is:inline script re-executing.
+  document.addEventListener("astro:page-load", () => {
+    updateTheme();
+
+    const themesMenu = document.getElementById("themes-menu");
+    const toggleBtn = document.getElementById("theme-toggle-btn");
+
+    toggleBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isClosed = !themesMenu.classList.contains("open");
+      themesMenu.classList[isClosed ? "add" : "remove"]("open");
+    });
+
+    document.querySelectorAll(".themes-menu-option").forEach((element) => {
+      element.addEventListener("click", (e) => {
+        localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
+        updateTheme();
+      });
     });
   });
 </script>
