@@ -1,5 +1,12 @@
-<span
-  class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+---
+const { href, target } = Astro.props;
+const Tag = href ? "a" : "span";
+---
+
+<Tag
+  class="bg-[#ff7efa] text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:text-[#ff7efa] dark:bg-pink-700/60"
+  href={href}
+  target={target}
 >
   <slot />
-</span>
+</Tag>
