@@ -2,11 +2,18 @@
 import ExperienceItem from "./ExperienceItem.astro";
 const experience = [
   {
+    date: "Febrero 2026 - Actualidad",
+    title:
+      "Full Stack Developer en Publica.la",
+    description:
+      "",
+  },
+  {
     date: "Febrero 2022 - Actualidad",
     title:
       "Desarrollador TALL stack, manager de contenido y creador de contenido",
     description:
-      "Me encuentro desarrollando aplicaciones web con el stack TALL, administrando contenido de instituciones públicas tanto legal como informativa. Además de crear contenido sobre programación y desarrollo de software.",
+      "Desarrollé aplicaciones web a medida con el stack TALL y me encargué del despliegue y mantenimiento, administré contenido de instituciones públicas tanto legal como informativa (LOTAIP, POA, PDOT, PAC y noticias). Además de crear contenido sobre programación y desarrollo de software.",
   },
   {
     date: "Enero 2020 - Enero 2022",
@@ -30,7 +37,7 @@ const experience = [
 ---
 
 <ol
-  class="relative ml-4 border-gray-400 dark:border-gray-200 border-s dark:border-gray-700"
+  class="relative ml-4 border-gray-400 border-s dark:border-gray-700"
 >
   {experience.map((item) => <ExperienceItem {...item} />)}
 </ol>
